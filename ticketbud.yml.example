@@ -1,0 +1,4 @@
+app_id: "get_your_api_id_from_your_ticketbud_application"
+secret: "get_your_secret_from_your_ticketbud_application"
+callback_url: "http://localhost:9393/auth/todo/callback"
+site: "https://ticketbud.com"

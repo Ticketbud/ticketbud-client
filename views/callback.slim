@@ -1,0 +1,26 @@
+script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"
+javascript:
+  $(function() {
+    console.log('loaded');
+    var items = [];
+    $.getJSON("http://api.ticketbud.dev/events.json?callback=?", {access_token: '#{@access_token}'}, function(data){
+      console.log(data);
+      $.each(data.events, function(key, val) {
+       console.log(key)
+       console.log(value)
+       items.push("<li><a href='http://api.ticketbud.dev/events/" + val.id + ".json'></a></li>")
+      });
+    });
+    $("ul#links").append(items.join(''));
+  });
+  
+h2 Callback Worked
+p 
+  strong Access Token:
+  br
+  = @access_token
+p
+  These links should now work:
+  ul#links
+    li
+      a href="http://api.ticketbud.dev/events.json?access_token=#{@access_token}" Your Events
