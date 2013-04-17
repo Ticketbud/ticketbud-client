@@ -1,18 +1,17 @@
-script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"
 javascript:
-  $(function() {
-    console.log('loaded');
-    var items = [];
-    $.getJSON("http://#{settings.base_domain}/events.json?callback=?", {access_token: '#{@access_token}'}, function(data){
-      console.log(data);
-      $.each(data.events, function(key, val) {
-       console.log(key)
-       console.log(value)
-       items.push("<li><a href='http://#{settings.base_domain}/events/" + val.id + ".json'></a></li>")
-      });
-    });
-    $("ul#links").append(items.join(''));
-  });
+  //$(function() {
+  //  console.log('loaded');
+  //  var items = [];
+  //  $.getJSON("http://api.ticketbud.dev/events.json?callback=?", {access_token: '#{@access_token}'}, function(data){
+  //    console.log(data);
+  //    $.each(data.events, function(key, val) {
+  //     console.log(key)
+  //     console.log(value)
+  //     items.push("<li><a href='http://api.ticketbud.dev/events/" + val.id + ".json'></a></li>")
+  //    });
+  //  });
+  //  $("ul#links").append(items.join(''));
+  //});
   
 h2 Callback Worked
 p 
@@ -24,3 +23,25 @@ p
   ul#links
     li
       a href="https://#{settings.base_domain}/events.json?access_token=#{@access_token}" Your Events
+script type="text/x-handlebars"
+  .container
+    .row-fluid
+      ul.nav.nav-list.span3.well
+        | {{#each model}}
+        li
+          | {{#linkTo "user" this}}{{first}}{{/linkTo}}
+        | {{/each}}
+      .span9.well
+        | {{outlet}}
+
+script type="text/x-handlebars" id="user"
+  h2
+    | {{first}} {{last}}
+    <img {{bindAttr src="avatar"}} class="pull-right" width=50 /> 
+  dl
+    dt First
+    dd
+      | {{first}}
+    dt Last
+    dd
+      | {{last}}

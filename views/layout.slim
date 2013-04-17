@@ -1,0 +1,12 @@
+html
+  head
+    link rel="stylesheet" href="http://netdna.bootstrapcdn.com/twitter-bootstrap/2.3.1/css/bootstrap-combined.min.css"
+    script src="http://code.jquery.com/jquery.js"
+    script src="//cdnjs.cloudflare.com/ajax/libs/handlebars.js/1.0.0-rc.3/handlebars.js"
+    script src="//cdnjs.cloudflare.com/ajax/libs/ember.js/1.0.0-rc.1/ember.js"
+    script src="/js/app.js"
+  body
+    .container
+      .row
+        .hero-unit
+          == yield
