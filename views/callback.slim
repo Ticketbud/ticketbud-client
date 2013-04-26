@@ -1,47 +1,66 @@
-javascript:
-  //$(function() {
-  //  console.log('loaded');
-  //  var items = [];
-  //  $.getJSON("http://api.ticketbud.dev/events.json?callback=?", {access_token: '#{@access_token}'}, function(data){
-  //    console.log(data);
-  //    $.each(data.events, function(key, val) {
-  //     console.log(key)
-  //     console.log(value)
-  //     items.push("<li><a href='http://api.ticketbud.dev/events/" + val.id + ".json'></a></li>")
-  //    });
-  //  });
-  //  $("ul#links").append(items.join(''));
-  //});
-  
-h2 Callback Worked
+h2 Callback Successful!
 p 
   strong Access Token:
   br
   = @access_token
-p
-  These links should now work:
-  ul#links
-    li
-      a href="https://#{settings.base_domain}/events.json?access_token=#{@access_token}" Your Events
-script type="text/x-handlebars"
+a href="#/events" class='btn btn-success btn-large' Show My Events 
+#ember-mount
+
+/ideally you would put these in .hbs files and compile them
+
+script type="text/x-handlebars" data-template-name='events'
   .container
     .row-fluid
       ul.nav.nav-list.span3.well
-        | {{#each model}}
-        li
-          | {{#linkTo "user" this}}{{first}}{{/linkTo}}
+        | {{#each controller}}
+        |   <li>{{#linkTo "event" this}} {{title}} {{/linkTo}}</li>
         | {{/each}}
-      .span9.well
+   
+      .span8.well
         | {{outlet}}
+script type="text/x-handlebars" data-template-name='events/index'
+  h3 Click on an Event Title to View Details
 
-script type="text/x-handlebars" id="user"
+script type="text/x-handlebars" data-template-name='event'
   h2
-    | {{first}} {{last}}
-    <img {{bindAttr src="avatar"}} class="pull-right" width=50 /> 
-  dl
-    dt First
-    dd
-      | {{first}}
-    dt Last
-    dd
-      | {{last}}
+    | {{title}}
+  p
+    | <img {{bindAttr src="image"}} />
+  p
+    | <strong>Start Time:</strong>
+    br
+    | {{eventStart}}
+  p
+    | <strong>End Time:</strong>
+    br
+    | {{eventEnd}}
+  p
+    | <strong>Time Zone:</strong>
+    br
+    | {{timeZone}}
+  p
+    | <strong>Tickets Available:</strong>
+    br
+    | {{ticketsAvailable}}
+  p
+    | <strong>Sold Out?</strong>
+    br
+    | {{soldOut}}
+  p
+    | <strong>Over?</strong>
+    br
+    | {{over}}
+  | {{#linkTo 'tickets' this classNames='btn btn-success btn-large'}} View Tickets {{/linkTo}}
+  #tickets
+    | {{ outlet }}
+script type="text/x-handlebars" data-template-name='tickets'
+  | {{#each model}}
+  | <div class="row">
+  |   <div class="span3"><img {{bindAttr src='barcodeUrl'}}/></div>
+  |    <div class="span5">
+  |     <h3>{{nameOnTicket}}</h3>
+  |     <p>{{ticketType}}</p>
+  |    </div>
+  |   </div>
+  | </div>
+  | {{/each}}

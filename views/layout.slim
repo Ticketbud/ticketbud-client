@@ -1,10 +1,14 @@
 html
   head
     link rel="stylesheet" href="http://netdna.bootstrapcdn.com/twitter-bootstrap/2.3.1/css/bootstrap-combined.min.css"
-    script src="http://code.jquery.com/jquery.js"
-    script src="//cdnjs.cloudflare.com/ajax/libs/handlebars.js/1.0.0-rc.3/handlebars.js"
-    script src="//cdnjs.cloudflare.com/ajax/libs/ember.js/1.0.0-rc.1/ember.js"
+    link rel="stylesheet" href="/css/style.css"
+    script src="//code.jquery.com/jquery-1.9.1.js"
+    script src="//builds.emberjs.com.s3.amazonaws.com/handlebars-1.0.0-rc.3.js"
+    script src="//builds.emberjs.com.s3.amazonaws.com/ember-1.0.0-rc.3.js"
+    script src="//builds.emberjs.com.s3.amazonaws.com/ember-data-fa946f9cbd8c2899605ee8b49d8d683ba1449f0e.js"
     script src="/js/app.js"
+    - if @access_token
+      meta name="access_token" content="#{@access_token}"
   body
     .container
       .row
