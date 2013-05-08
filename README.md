@@ -20,7 +20,7 @@ You will now have a local client server running on port 9393.
 
 Go to http://localhost:9393
 
-![Screenshot](https://s3.amazonaws.com/ticketbud/random/Screen+Shot+2013-04-17+at+10.45.19+AM.png "Screenshot of simple client")
+![Screenshot](https://s3.amazonaws.com/ticketbud/random/Screen+Shot+2013-05-08+at+9.58.18+AM.png "Screenshot of simple client")
 
 You will be directed to ticketbud to Authorize the Client:
 
@@ -28,7 +28,11 @@ You will be directed to ticketbud to Authorize the Client:
 
 Accept the Authorization and you will be redirected to your callback url:
 
-![Screenshot](https://s3.amazonaws.com/ticketbud/random/Screen+Shot+2013-04-17+at+12.09.29+PM.png "Screenshot of callback")
+![Screenshot](https://s3.amazonaws.com/ticketbud/random/Screen+Shot+2013-05-08+at+9.58.41+AM.png "Screenshot of callback")
+
+You can view your events:
+
+![Screenshot](https://s3.amazonaws.com/ticketbud/random/Screen+Shot+2013-05-08+at+10.01.33+AM.png "Screenshot of events")
 
 Now you have an idea of the ticketbud API interaction. In a real world application you wouldn't expose your access_token, and you would most likely be performing this flow
 in an automated way.
