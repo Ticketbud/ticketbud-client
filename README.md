@@ -38,3 +38,18 @@ Now you have an idea of the ticketbud API interaction. In a real world applicati
 in an automated way.
 
 Happy Hacking!
+
+Ticketbud OmniAuth Example
+===========================
+
+Also include in this repo is an example omniauth integration.
+
+To run it:
+
+`bundle install`
+
+Then
+
+`shotgun tb_omniauth`
+
+Go to: http://localhost:9393
